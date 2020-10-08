@@ -32,7 +32,7 @@ prop :: Testable p => p -> IO ()
 prop p = do
   r <- quickCheckWithResult quietArgs p
   case r of
-    Success _ _ _ -> return ()
+    Success _ _ _ _ _ _ -> return ()
     _ -> putStrLn $ output r
 
 -- | @prop@ with customized arguments.
@@ -40,5 +40,5 @@ propWith :: Testable p => Args -> p -> IO ()
 propWith args p = do
   r <- quickCheckWithResult args  p
   case r of
-    Success _ _ _ -> return ()
+    Success _ _ _ _ _ _ -> return ()
     _ -> putStrLn $ output r
